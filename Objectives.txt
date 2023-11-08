@@ -1,0 +1,9 @@
+Objectifs : 
+
+- Main.py
+	- Boucle de jeu 
+	- Boucle de selection
+- Pré affichage
+- Commentairessssssss UwU
+- Sauvegarde 
+

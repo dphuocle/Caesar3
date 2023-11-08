@@ -1,0 +1,42 @@
+on modélise le jeu a l'aide de 3 gros ensembles:
+La matrice des batiments, qui contient tous les batiments
+la matrice des personnages qui contient tous les personnages
+la liste des variables globales (qui contient pour l'instant juste la liste des batiments de stockage, mais devra contenir le nombre de population, le contentement, l'argent... toutes les variables importantes)
+
+
+les matrices sont faites pour correspondre au jeu: la case en 0,0 correspond a la matrice en (0,0)
+la matrice est inversée au niveau des axes: Mat[y][x] c'est la case (x,y)
+
+pour les batiments le terrain par défaut est l'herbe
+pour les personnage j'ai (pierre-gilles) resonné de la meme facon et le personnage par défaut est Walker
+(sauf que en fait on s'est rendu compte que c'était un gaspillage memoire enorme de declarer un Walker pour chaque case vide, et vu qu'on se sert que de l'attribu name pour les Walker (pour les test et l'affichage) on a prévu de remplacer les déclaration de walker par des declaration d'une classe qui aura pour seul attribu name, (avec le nom correspondant, 'no Walker')  )
+
+
+En jeu (dans le main), on n'utilisera que les fonctions de logique.py, celles présente dans les autres fichiers servent de briques pour celles présentes dans logique.py 
+
+la plupart des fichier.py contiennent les definitions des classes.
+la classe dont herite tout les batiment est Batiment
+et la classe dont herite tout les walker est Walker
+(l'inspiration est présente)
+a l'origine matrice.py devait regrouper seulement les méthodes d'interaction avec les matrices mais au final on a un peu mis tout ce dont on avait besoin dedans pour servir les methode de logique.py
+
+la plupart des methodes de matrice.py prennent en argument des matrices, alors qu'on utilisera tout le temps les memes (pour les methode de batiment, Mat_batiment, pour les methodes de walker, Mat_perso)
+c'est parce que au début on ne savait pas comment proceder, donc on a resonné par fonction 
+Ca a aussi un autre avantage, on peut tester avec d'autre matrices les methodes (plus petites, parce que toujours utiliser du 40*40 ca peut prendre du temps inutilement)
+
+On a a peu pres deux gros probleme en logique: gerer les interactions walker-batiment, et gerer les events en jeu
+pour l'instant on a travaillé que sur le premier probleme (pour le deuxieme on a que les sauvegardes/load)
+pour le premier probleme, on a rencontré d'autres problemes, la plupart des methodes qu'on a faits sont incomplètes: le deplacement j'ai (pierre-gilles) passé pas mal de temps dessus et y a que la partie des deplacement avec un objectif fixé qui est traité (ce n'est pas encore mis en paralle et le code est pas beau, mais ca marche)
+pour ce qui est des livraisons (appeler un walker, lui donner des marchandises, et le faire echanger avec le batiment cible), on a des problemes sur la partie echange, pour l'instant ca ne marche que avec une marchandise (mais Antoine travaille dessus) 
+
+pour initialiser le jeu, il faut juste appeler init_game() (qui n'est pas finie, il faut encore prendre en compte le cas où on charge une ancienne partie, pour l'instant on se contente d'initialiser la matrice a l'aide de celle de depart)
+comme on est en phase de test, on a commenté la ligne qui l'appelait, parce que c'est plus facile de travailler avec une matrice ou il y a que de l'herbe pour placer des batiments avec des methodes qui accepte de placer des batiment uniquement sur de l'herbe... mais au debut du vrai jeu il faudra evidemment l'appeler
+
+
+
+il y a une partie test a la fin de logique.py et de matrice.py
+les methodes sont toutes commentées, il y a peut être juste pas assez de détails
+
+
+
+
